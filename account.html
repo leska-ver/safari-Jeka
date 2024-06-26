@@ -11,18 +11,20 @@
   <meta name="description" content="Рады видеть Вас на нашем сайте.">
   <meta property="og:title" content="Интернет магазин Safari">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://leska-ver.github.io/elka-Max/"><!-- здесь ссылка на сайт -->
+  <meta property="og:url" content="https://leska-ver.github.io/safari-Jeka/account.html"><!-- здесь ссылка на сайт -->
   <meta property="og:image" content="img/ogImage.jpg">
   <meta name="keywords" content="магазин, купить, доставка, одежда, сумки, подарки, обувь, shop">
   <!-- //Для поиска в сети-->
-  <!--Для кодепена Селектор-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css"/> 
-  <!--Для компа Селектор
-  <link rel="stylesheet" href="css/choices.min.css">-->
+  <!--Для кодепена Селектор
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css"/>--> 
+  <!--Для компа Селектор-->
+  <link rel="stylesheet" href="css/choices.min.css">
   <!--Слайдер-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <title>Safari webstore</title>
   <link rel="stylesheet" href="css/normalize.css">
+  <!--Скроллбар main-form /ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ. Нужен для Слоника в форме-->
+  <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -83,7 +85,7 @@
       </div>
     </header>
     <main>
-      <section class="account">
+      <section class="account main-form">
         <div class="account__container">
           <div class="account__dashboard">
             <h2 class="account__h2 h2">ACCOUNT DASHBOARD</h2>
@@ -148,33 +150,90 @@
             <!-- элемент таба 1-->
             <div class="account__tab tabs-itemJs tabs-itemJs--active" data-target="account">
               <h3 class="account__h3 h3">User Information</h3>
-              <div class="account__contact">
-                <form class="account__form" id="input-form">
-                  <label for="firstName">First name</label>
-                  <input class="input-field" type="text" id="firstName" name="nameF" placeholder="">
-                  <label for="lastName">Last name</label>
-                  <input class="input-field" type="text" id="lastName" name="nameL" placeholder="">
-                  <label for="email">Email</label>
-                  <input class="input-field" type="email" id="email" name="email" placeholder="">
-                  <label for="gender">Gender</label>
-                  <select class="account__select" id="gender" name="gender" aria-label="Выбрать пола">
-                    <!-- selected поумолчанию выбор пустой. не удалять -->
-                    <option selected disabled></option>
-                    <option value="man">Man</option>
-                    <option value="woman">Woman</option>
-                  </select> 
-                  <label for="date">Date of birth</label>
-                  <input type="date" name="date" id="date">
-                </form>
-                <!-- <button onclick="document.getElementById('input-form').reset()" class="button">Take the Oath</button> -->
-                <button class="account__button btn" aria-label="Нажмите чтобы отправить">
+              <form class="account__form form-disabled" action="mail.php" method="POST" enctype="multipart/form-data" aria-label="Здесь вы можете заказать обратный звонок">
+                <input type="hidden" name="admin_email[]" value="darki@yandex.ru">  
+                <input type="hidden" name="form_subject" value="Заявка с сайта SitDownPls">
+                <div class="account__shadow">
+                  <div class="account__contact">                   
+                    <!--data здесь он обрабатывает плагин валидатор кода-->
+                    <label class="position-field tel" for="tel">Tel
+                      <input type="tel" name="tel" placeholder="Ваш телефон" data-validate-field="tel"
+                        data-validate-rules="phone" id="tel" aria-label="Введите ваш телефон"></label>
+                    <label class="position-field" for="firstName">First name
+                      <input type="text" id="firstName" name="name" placeholder="" data-validate-field="nameF" required aria-label="Введите Ваше имя">
+                    </label>
+                    <label class="position-field" for="lastName">Last name
+                      <input type="text" id="lastName" name="name" placeholder="" data-validate-field="nameL" required aria-label="Введите Вашу фамилию">
+                    </label>                    
+                    <label class="position-field" for="email">Email
+                      <input type="email" placeholder="" data-validate-field="email" name="email" id="email" aria-label="Введите вашу почту">
+                    </label>  
+                    <label class="position-field" for="gender">Gender 
+                      <select class="account__select" id="gender" aria-label="Выбрать пол" data-validate-field="select" name="select" required>
+                        <!-- selected поумолчанию выбор пустой. не удалять -->
+                        <option selected disabled></option>
+                        <option value="man">Man</option>
+                        <option value="woman">Woman</option>
+                      </select>
+                    </label>
+                    <label for="date">Date of birth
+                      <input type="date" name="date" id="date">
+                    </label>                  
+                    <div class="account__checkbox position-field">
+                      <input class="account__input-checkbox input-checkbox click-checkbox-js checkbox-js checkbox-disabled" id="checkbox" type="checkbox" checked="checked" aria-label="Нажмите если принимаете пользовательское соглашение" required data-validate-field="checkbox">
+                      <label class="account__label account__label-checkbox" for="checkbox"></label>
+                      <a class="account__link modalBtn-js" href="#" data-modal-trigger="trigger-3" aria-label="Нажмите чтобы подписаться на рассылку новостей">Newsletter subsciption</a>
+                    </div>
+                  </div>
+                </div>
+                <button class="account__btn btn account__btn_jsDis account__btn_filled   account__button" aria-label="Нажмите чтобы отправить">
                   save changes
                 </button>
+              </form> 
+
+
+
+
+
+
+
+              <div class="main-form__modal modal" data-modal="trigger-3">
+                <div class="main-form__block"><!--__block для высоты.simplebar-content-->
+                  <div class="main-form__modal-wrap-pol modal-wrap">
+                    <div class="main-form__container-pol modal-container" data-simplebar>
+                      <button class="main-form__modal-close modal-close" title="Закрыть">&#10006;</button>
+                      <h2 class="main-form__modal-h2 h2">
+                        ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ
+                      </h2>
+                      <p>1. Основные понятия.</p>
+                      <p>1.1. Интернет-магазин — интернет-сайт, расположенный по адресу: <del>(ссылка)</del> на котором
+                        представлены Товары, предлагаемые Продавцом для приобретения и все связанные с ним поддомены;</p>
+                      <p>1.2. Посетитель Интернет-магазина — лицо, пришедшее на сайт Интернет-магазина без цели размещения
+                        Заказа;
+                      </p>
+                      <p>2. Общие положения.</p>
+                      <p>2.1. Продавец осуществляет продажу Товаров через Интернет-магазин.</p>
+                      <p>2.2. Заказывая Товары через Интернет-магазин, Пользователь соглашается с условиями, изложенными ниже. В случае несогласия с условиями, изложенными в настоящем Пользовательском соглашении (далее — Соглашение или Публичная оферта) Пользователь обязан немедленно прекратить использование сервиса и покинуть Интернет-магазин.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="main-form__slonik modal-slonik main-form__slonik_js">
+                <div class="main-form__slonik-sps modal-slonik-sps main-form__slonik-sps_js">
+                  <button class="main-form__modal-close modal-close main-form__modal-close_js" title="Закрыть">
+                    &#10006;
+                  </button>
+                  <div class="main-form__elephant-png"></div>
+                  <h2 class="main-form__modal-h2 main-form__modal-h2_elephant320 h2">
+                    Спасибо, мы вам перезвоним!
+                  </h2>
+                </div>
+              </div><!--d-31__top-slonik-->           
+            </div>
+
                     
 
-
-              </div>
-            </div>
+          
             <!-- элемент таба 2-->
             <div class="account__tab tabs-itemJs" data-target="address">
               <h3 class="account__h3 h3">Address Book</h3>
@@ -286,10 +345,16 @@
   <!-- Библиотечные -->
   <!--Слайдер выше селектора, он ближе к head по макету-->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <!--Для компа Селектор
-  <script src="js/choices.min.js"></script>-->
-  <!--Для кодепена Селектор-->
-  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js" defer></script>
+  <!--Для компа Селектор-->
+  <script src="js/choices.min.js"></script>
+  <!--Для кодепена Селектор
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js" defer></script>-->
+  <!--Маска формы input-ов-->
+  <script src="js/inputmask.min.js"></script>
+  <!--Валидатор input-ов версия 4.2.0-->
+  <script src="js/just-validate.js"></script>
+  <!--Скроллбар main-form /ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ. Нужен для Слоника в форме-->
+  <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
   
   
 

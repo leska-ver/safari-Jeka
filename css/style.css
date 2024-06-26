@@ -54,8 +54,13 @@
   --color-white: #fff;
   --color-black: #000;
   --color-razzmatazz: #ed165f;
+  --color-rust: #bb370e;
   --color-wildSand: #f5f5f5;
-  --color-doveGray: #686868;
+  --color-doveGray: #686868;  
+  --color-magnolia: #f8efff;  
+  --color-sulu: #b8ec64;/*line-color*/
+  /*just-validate-error - цвет ошибки*/
+  --color-error: #FF6972;
 }
 
 html {
@@ -1481,6 +1486,216 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 12px;
 }
 
+/***Стилазация фразы ошибки***/
+.position-field {/*общий*/
+  position: relative;
+}
+
+.js-validate-error-label {
+  position: absolute;
+  top: -21px; 
+}
+
+/* У пустого option убрали паддинг */
+.position-field .choices__list--dropdown .choices__item--disabled, .position-field .choices__list[aria-expanded] .choices__item--disabled {
+  padding: 0;
+}
+/***Конец стилазация фразы ошибки***/
+
+/*Для JustValidate галочка-Принимаю в main-form и в d-31*/
+input[type=checkbox]:focus ~ label::before {
+  outline: none;
+  border: 2px solid rgb(255, 105, 114);
+  background-color: var(--color-mauve);
+}
+
+input[type=checkbox]:active ~ label::before {
+  border: 2px solid var(--color-sulu);
+}
+/* // Для JustValidate галочка-Принимаю в main-form и в d-31*/
+
+/*ховерит input в main-form и в d-31*/
+.main-form__input-checkbox:hover, input[type="checkbox"]:hover ~ label::before {
+  border: 1px solid var(--color-purpleHeart);
+  background-color: var(--color-purpleHeart);
+}
+
+/*---Скроллбар(d-31-ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ)---*/
+.simplebar-mask {
+  /*Чтобы текст не прятался в прокрутке в блок*/
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.simplebar-content-wrapper {
+  /*авто включение js для скролл*/
+  overflow: auto;
+}
+
+.simplebar-track.simplebar-vertical {
+  /*Прокрутку двигаем*/ 
+  right: 10px;
+  bottom: 20px;
+} 
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+  /*Прокрутку двигаем*/
+  top: 65px;
+  right: 0;
+}
+
+.simplebar-scrollbar::before {
+  /*Из библиотеки*/
+  /*Здесь(кодепен) цвет не работает*/
+  /*На компе и в css работает*/
+  height: 70px;
+  background-color: var(--color-mediumPurple);
+  /* opacity: 1; */
+}
+/*--- // Скроллбар---*/
+
+/*** modal-Модальное окно***/
+.modal {  
+  display: none;
+  justify-content: center;
+  width: 750px;
+  background-color: var(--color-white);
+  position: fixed;
+  overflow: auto;/*Будет прокрутка когда она не умещается в экране*/
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 990;/*Для js*/
+  /*Для modal-active*/
+  transform: scale(0);
+}
+
+.modal-active {
+  display: block;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(51,51,51,.3);
+  transform: scale(1);
+}
+
+.modal-wrap {
+  display: inline-block;  
+  margin: 39px;
+  max-width: 500px;
+  width: 100%;
+  vertical-align: middle;
+  text-align: left;
+  background-color: var(--color-white);
+  overflow: auto;
+}
+
+.modal-container {
+  position: relative;
+  padding-top: 50px;
+  border-radius: 10px;
+  width: 100%;
+  height: max-content;    
+  transform: scale(1);
+  transition: transform 500ms;  
+}
+/*** // modal-Модальное окно***/
+
+/*Крест выключатель модального окна*/
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  outline: none; 
+  border: 2px solid transparent; 
+  font-size: 18px;
+  -webkit-transition: color .4s ease-in-out, background-color .4s ease-in-out;
+  -ms-transition: color .4s ease-in-out, background-color .4s ease-in-out;
+  -moz-transition: color .4s ease-in-out, background-color .4s ease-in-out;
+  -o-transition: color .4s ease-in-out, background-color .4s ease-in-out;
+  transition: color .4s ease-in-out, background-color .4s ease-in-out;
+  cursor: pointer;  
+}
+
+.modal-close:focus {
+  border: 2px solid var(--color-razzmatazz);   
+  color: var(--color-razzmatazz);
+}
+
+.modal-close:hover {
+  color: var(--color-white);
+  background-color: var(--color-razzmatazz);
+}
+
+.modal-close:active {
+  opacity: .7;
+}
+/* // Крест выключатель модального окна*/
+
+/*---Стили формы ошибки, галка, цвет текста в файле d-31.js(Слоник модальное окно) - colorWrong: '#ff6972'---*/
+.modal-slonik {  
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 100%;
+  height: 100%;  
+  background-color: rgba(51, 51, 51, 0.3);
+}
+
+.modal-slonik-sps {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-basis: 624px;
+  padding: 116px 30px;
+  border-radius: 10px;
+  min-width: 260px;
+  background-color: var(--color-white);
+  opacity: 0;  
+  -webkit-transition: opacity 0.15s linear;
+  -ms-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;  
+  overflow: hidden; 
+}
+
+.main-form__slonik_js {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;/*Для js перекрыть .modal*/
+}
+
+.main-form__slonik_js_active {
+  visibility: visible;
+  opacity: 1;
+}
+
+ .main-form__slonik-sps_js {
+  display: none;
+  opacity: 0;
+}
+
+ .main-form__slonik-sps_js_active {
+  opacity: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*** // modal-Модальное окно***/
+/*--- // Стили формы ошибки, галка, цвет текста в файле d-31.js(Слоник модальное окно) - colorWrong: '#ff6972'---*/
+
+
 
 /* Шапка header-1440 */
 .header {
@@ -2196,15 +2411,347 @@ input:focus::-webkit-input-placeholder {
 }
 
 /* Account Information/User Information */
-.account__form {  
-	display: flex;
-	flex-direction: column;
+.account__shadow {
+  padding: 59px 65px;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
   width: 100%;
-  background: var(--color-white);
+  background-color: var(--color-white);
 }
 
-/* Address Book */
+.account__contact {  
+	display: flex;
+	flex-direction: column;
+  width: 349px;
+}
+
+.account__contact .tel {
+  /* Скрыли т.к он в этом проекте не нужен */
+  display: none;
+  /* visibility: hidden; */
+}
+
+.account__form label {
+  /*Для формы ошибки .js-validate-error-label*/
+  position: relative;
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.28571;
+}
+
+.account__form label .js-validate-error-label {
+  position: absolute;
+  top: 0; 
+  right: 0;
+}
+
+.account__form input {
+  display: block;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid var(--color-black);
+  width: 100%;
+  -webkit-transition: background-color .4s ease-in-out; 
+  -ms-transition: background-color .4s ease-in-out;
+  -moz-transition: background-color .4s ease-in-out;
+  -o-transition: background-color .4s ease-in-out;
+  transition: background-color .4s ease-in-out;
+}
+
+.account__form input:focus {
+  outline: none;
+  border: 1px solid var(--color-razzmatazz);
+  background-color: var(--color-magnolia);
+}
+
+.account__form input:hover {
+  border: 1px solid var(--color-mineShaft);
+  background-color: var(--color-gallery);
+}
+ 
+.account__form input:active {
+  border: 1px solid var(--color-sulu);
+  background-color: var(--color-wildSand);
+}
+
+/* .account__form input:not(:last-child) {
+  margin-bottom: 34px;
+} */
+
+/*-Селектор Gender(.account). Библиотечные стили-*/
+
+.account__form .choices {
+  /*Не удалять, он для фокуса*/
+  border-radius: 6px;
+  border: 1px solid var(--color-black);
+}
+
+.account__form .choices:focus {
+  outline: none;
+  border: 1px solid var(--color-razzmatazz);
+}
+
+.account__form .choices__inner {
+  position: relative;
+  padding: 30px 4px;
+  border: 1px solid transparent;
+  min-height: min-content;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000;
+  -webkit-transition: all var(--transition-duration);
+  -moz-transition: all var(--transition-duration);
+  -ms-transition: all var(--transition-duration);
+  -o-transition: all var(--transition-duration);
+  transition: all var(--transition-duration);
+  z-index: 4;
+}
+
+.account__form .choices__inner:hover {
+  background-color: #e1e1e1;
+}
+
+.account__form .choices__inner:active {
+  color: var(--color-doveGray);
+  background-color: transparent;
+}
+
+.account__form.is-focused .choices__inner {
+  /*Не удалять*/
+  border: 1px solid transparent;
+  color: blue;
+}
+
+.account__form.is-focused:hover .choices__inner {
+  color: var(--color-doveGray);
+}
+
+.account__form.is-open .choices__inner {
+  /*типа active*/
+  border-radius: 0;
+  color: var(--color-doveGray);
+  background-color: transparent;   
+}
+
+.account__form[data-type*=select-one] .choices__inner {
+  padding: 0;
+}  
+
+.account__form .choices[data-type*=select-one] .choices__inner {
+  /* Для PP. Для пустого селектора. 
+  margin-bottom: 9px;*/
+  padding: 18px 4px;
+}
+
+.account__form .choices__list--single {
+  /* Для PP. Для заполненого селектора. */
+  padding: 0 24px 0 4px;
+}
+
+.account__form .choices {
+  /* Для реакции выбора .account__form .choices__list--dropdown */
+  z-index: 5;
+}
+
+.account__form .choices__inner:focus {
+  /* Для реакции выбора .account__form .choices__list--dropdown */
+  border: 1px solid var(--color-razzmatazz);
+}
+
+.account__form .choices[data-type*=select-one]:after {
+  top: 37%;
+  right: 21px;
+  border: 0;
+  width: 15px;
+  height: 15px;
+  /*Для компа*/
+  background-image: url("../img/jackdaw.svg");
+  /*Для codepen
+  background-image: url("https://e7.pngegg.com/pngimages/392/1011/png-clipart-stopwatch-graphics-xchng-timer-watch-accessories-timer.png");*/ 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateX(50%);
+  -webkit-transition: all var(--transition-duration);
+  -moz-transition: all var(--transition-duration);
+  -ms-transition: all var(--transition-duration);
+  -o-transition: all var(--transition-duration);
+  transition: all var(--transition-duration);
+  z-index: 15;
+}
+
+.account__form .choices[data-type*=select-one].is-open:after {
+  margin-top: 0;
+  /*Для компа*/
+  background-image: url("../img/jackdaw.svg");
+  /*Для codepen
+  background-image: url("https://e7.pngegg.com/pngimages/392/1011/png-clipart-stopwatch-graphics-xchng-timer-watch-accessories-timer.png");*/
+  background-repeat: no-repeat;
+  transform: rotate(180deg) translate(-50%, 2px); 
+}
+
+.account__form .choices__inner {
+  background-color: transparent;
+}
+
+/*Стили option-ов которые без value*/
+.account__form .choices__list--dropdown {
+  top: 101%;
+  left: -1px;
+  border-radius: 0;
+  border: none; 
+  border-top: 1px solid var(--color-razzmatazz);  
+  width: 100.5%;
+  /* Для реакции выбора .account__form .choices */
+  z-index: 3;
+}
+
+.account__form .choices__list--dropdown .choices__item--selectable.is-highlighted {
+  color: var(--color-white);
+  background-color: var(--color-razzmatazz)
+}
+/*Конец стили option-ов которые без value*/
+
+.account__form .choices__list--dropdown .choices__list {
+  border: 1px solid var(--color-razzmatazz);
+  border-top: none;
+}
+
+/*Изчеснит с option-ом выбраный объект. С disabled эфект лучше работает*/
+.account__form .choices__list .choices__item.is-selected {
+  display: none; 
+}
+
+.account__form .choices__placeholder {
+  /* он пустой option, padding ему не нужен. в кодепене глучить */
+  padding: 0;
+}
+/*- // Селект Gender(.account) -*/
+
+/***Стилазация фразы ошибки***/
+.account__checkbox .js-validate-error-label {
+  top: -8px;
+  font-size: 14px;
+}
+/***Конец стилазация фразы ошибки***/
+
+.account__input-checkbox {
+  padding-left: 0;
+  /*Убрали синий чекбокс, он на мобильнике высвечивается*/
+  opacity: 0;
+}
+
+.account__label-checkbox {
+  padding-left: 0;
+}
+
+.account__input-checkbox:focus, input[type="checkbox"]:focus ~ label::before, .checkbox-js:checked + .account__label-checkbox:focus::before {
+  border: 1px solid rgb(255, 105, 114);
+  background-color: rgb(255, 105, 114);
+  outline: none;
+}
+
+/*Для Галпа*/
+.account__input-checkbox:focus-visible {
+  outline: none;
+}
+/* // Для Галпа*/
+
+.account__input-checkbox:hover, input[type="checkbox"]:hover ~ label::before {
+  border: 1px solid var(--color-rust);
+  background-color: var(--color-rust);
+}
+
+.account__label-checkbox {
+  /*Длягалки*/
+  position: relative;
+  margin-right: 5px;
+}
+
+.account__label-checkbox::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: -17px;
+  border: 1px solid var(--color-dustyGray);
+  border-radius: 2px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-razzmatazz);
+  cursor: pointer;
+  -webkit-transition: border-color 0.05s linear, background-color 0.05s linear;
+  -ms-transition: border-color 0.05s linear, background-color 0.05s linear;
+  -moz-transition: border-color 0.05s linear, background-color 0.05s linear;
+  -o-transition: border-color 0.05s linear, background-color 0.05s linear;
+  transition: border-color 0.05s linear, background-color 0.05s linear;
+}
+
+.checkbox-js:checked + .account__label-checkbox::before {
+  border-color: var(--color-razzmatazz);
+  background-color: var(--color-razzmatazz);
+}
+
+.account__label-checkbox::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -14px;
+  border-top: 2px solid var(--color-white);
+  border-right: 2px solid var(--color-white);
+  border-radius: 2px;
+  width: 9px;
+  height: 6px;
+  transform: rotate(123deg);
+  cursor: pointer;
+  -webkit-transition: background-image 0.05s linear;
+  -ms-transition: background-image 0.05s linear;
+  -moz-transition: background-image 0.05s linear;
+  -o-transition: background-image 0.05s linear;
+  transition: background-image 0.05s linear;
+  display: none;
+}
+
+.checkbox-js:checked + .account__label-checkbox::after {
+  display: block;
+}
+
+.account__link {
+  text-decoration: underline;
+  -webkit-transition: .2s ease-in-out; 
+  -ms-transition: .2s ease-in-out;
+  -moz-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+
+.account__link:focus {
+  color: var(--color-white);
+  background-color: var(--color-razzmatazz);
+  outline: none;
+}
+
+.account__link:hover {
+  color: var(--color-razzmatazz);
+  background-color: transparent;
+}
+
+.account__link:active {
+  color: var(--color-white);
+  background-color: var(--color-razzmatazz);
+  opacity: .7;
+}
+
+.account__btn {
+  margin-bottom: 10px;
+  width: max-content;
+}
+
+.account__btn_filled:disabled {
+  color: #999;
+  border-color: #EAEAEA;
+  background-color: #EAEAEA;
+}
+
+/* Address Book. Элемент таба 2 */
 .account__address {
   padding: 25px 0;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
@@ -2416,151 +2963,129 @@ input:focus::-webkit-input-placeholder {
 
 
 
-/***************************/
 
-/*-Селектор Gender(.account). Библиотечные стили-*/
-.account__form {
-  margin-right: 19px;
+
+/******************************/
+:root {
+  --color-white: #fff;
+  --color-mineShaft: #333;/*Макета цвет black*/
+  --color-purpleHeart: #7033ac;/*primary_shade*/
+  --color-mauve: #c998fb;/*primary_light*/
+  --color-blueChalk: #ebd1ff;/*pink_violet*/
+  /*secondary_shade*/
+  --color-crusta: #ff862f;/*secondary*/
+  --color-koromiko: #ffbd59;/*secondary_light*/
+  --color-milkPunch: #fff5d1;/*gold*/
+  --color-straw: #d5b986;/*bone*/
+  --color-wildSand: #f6f6f6;/*grey_light*/
+  --color-dustyGray: #999;/*grey_shade*/
+  --color-doveGray: #666;/*gray*/
+  --color-gallery: #eaeaea;/*green_input*/
+  --color-snowFlurry: #daffd1;
+  --color-linkWater: #f2f2fc;  
 }
 
-.account__form .choices__inner {
-  position: relative;
-  padding: 6.5px 4px;
-  /*Не удалять, он для фокуса*/
-  border: 1px solid #000;
-  border-radius: 6px;
-  min-height: min-content;
-  font-size: 16px;
-  line-height: 22px;
-  color: #000;
-  -webkit-transition: all var(--transition-duration);
-  -moz-transition: all var(--transition-duration);
-  -ms-transition: all var(--transition-duration);
-  -o-transition: all var(--transition-duration);
-  transition: all var(--transition-duration);
-  z-index: 4;
-}
 
-.account__form .choices__inner:focus {
-  border: 1px solid var(--color-razzmatazz);
-}
 
-.account__form .choices__inner:hover {
-  background-color: #e1e1e1;
-}
 
-.account__form .choices__inner:active {
-  color: var(--color-doveGray);
-  background-color: transparent;
-}
 
-.account__form.is-focused .choices__inner {
-  /*Не удалять*/
-  border: 1px solid transparent;
-  color: blue;
-}
 
-.account__form.is-focused:hover .choices__inner {
-  color: var(--color-doveGray);
-}
 
-.account__form.is-open .choices__inner {
-  /*типа active*/
-  border-radius: 0;
-  color: var(--color-doveGray);
-  background-color: transparent;   
-}
 
-.account__form[data-type*=select-one] .choices__inner {
-  padding: 0;
-}
 
-.account__form .choices__list--single {
-  padding: 4px 24px 4px 4px;
-}
+/* //Иконка*/
 
-.account__form .choices {
-  /* Для реакции выбора .account__form .choices__list--dropdown */
-  z-index: 5;
+/*Для размера модалки*/
+.main-form__block .simplebar-content {/*Не удалять!*/
+	height: 336px;
 }
+/* // Для размера модалки*/
 
-.account__form .choices[data-type*=select-one]:after {
-  top: 37%;
-  right: 18px;
-  border: 0;
-  width: 15px;
-  height: 15px;
-  /*Для компа*/
-/*   background-image: url("../img/jackdaw.svg"); */
-  /*Для codepen*/
-  background-image: url("https://e7.pngegg.com/pngimages/392/1011/png-clipart-stopwatch-graphics-xchng-timer-watch-accessories-timer.png"); 
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  transform: translateX(50%);
-  -webkit-transition: all var(--transition-duration);
-  -moz-transition: all var(--transition-duration);
-  -ms-transition: all var(--transition-duration);
-  -o-transition: all var(--transition-duration);
-  transition: all var(--transition-duration);
-  z-index: 15;
-}
-
-.account__form.choices[data-type*=select-one]:focus:after {
-  /*Для компа*/
-/*   background-image: url("../img/jackdawC99.svg"); */
-  /*Для codepen*/
-  background-image: url("https://e7.pngegg.com/pngimages/392/1011/png-clipart-stopwatch-graphics-xchng-timer-watch-accessories-timer.png"); 
-}
-
-.account__form.choices[data-type*=select-one]:hover:after {
-  /*Для компа*/
-/*   background-image: url("../img/jackdaw703.svg"); */
-  /*Для codepen*/
-  background-image: url("https://e7.pngegg.com/pngimages/392/1011/png-clipart-stopwatch-graphics-xchng-timer-watch-accessories-timer.png");
-}
-
-.account__form .choices[data-type*=select-one].is-open:after {
+.main-form__modal-h2 {/*Общий*/
   margin-top: 0;
-  /*Для компа*/
-/*   background-image: url("../img/jackdaw703.svg"); */
-  /*Для codepen*/
-  background-image: url("https://e7.pngegg.com/pngimages/392/1011/png-clipart-stopwatch-graphics-xchng-timer-watch-accessories-timer.png");
-  background-repeat: no-repeat;
-  transform: rotate(180deg) translate(-50%, 2px); 
+  margin-bottom: 7px;
+  /*У h2 стоит bold*/
+  font-weight: 400;
+  font-size: 32px;
 }
 
-.account__form .choices__inner {
-  background-color: transparent;
+/*modal ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ 1920px*/
+.main-form__modal-wrap-pol {      
+    max-width: 900px;
+  }
+  
+.main-form__container-pol {
+  padding: 29px 30px 24px;
+  height: 420px;
 }
 
-/*Стили option-ов которые без value*/
-.account__form .choices__list--dropdown {
-  /* top: 26px; + */
-  border-radius: 0;
-  border: none;   
-  /* Для реакции выбора .account__form .choices */
-  z-index: 3;
+.main-form__modal-container-pol p {
+  margin: 0;
+}
+/* // modal ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ 1920px*/
+/*--- // Тултип---*/
+
+
+
+
+
+/**************************************/
+/*---Стили формы ошибки, галка, цвет текста в файле d-31.js(Слоник модальное окно) - colorWrong: '#ff6972'---*/
+.modal-slonik {  
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 100%;
+  height: 100%;  
+  background-color: rgba(51, 51, 51, 0.3);
 }
 
-.account__form .choices__list--dropdown .choices__item--selectable.is-highlighted {
-  color: var(--color-white);
-  background-color: var(--color-razzmatazz)
+.modal-slonik-sps {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-basis: 624px;
+  padding: 116px 30px;
+  border-radius: 10px;
+  min-width: 260px;
+  background-color: var(--color-white);
+  opacity: 0;  
+  -webkit-transition: opacity 0.15s linear;
+  -ms-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;  
+  overflow: hidden; 
 }
-/*Конец стили option-ов которые без value*/
 
-.account__form .choices__list--dropdown .choices__list {
-  border: 1px solid var(--color-razzmatazz);
+.main-form__slonik_js {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;/*Для js перекрыть .modal*/
 }
 
-/*Изчеснит с option-ом выбраный объект. С disabled эфект лучше работает*/
-.account__form .choices__list .choices__item.is-selected {
-  display: none; 
+.main-form__slonik_js_active {
+  visibility: visible;
+  opacity: 1;
 }
 
-.account__form .choices__placeholder {
-  /* он пустой option, padding ему не нужен. в кодепене глучить */
-  padding: 0;
+ .main-form__slonik-sps_js {
+  display: none;
+  opacity: 0;
 }
-/*- // Селект Gender(.account) -*/
 
+ .main-form__slonik-sps_js_active {
+  opacity: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*** // modal-Модальное окно***/
