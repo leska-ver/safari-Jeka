@@ -2,8 +2,8 @@
 
 **Статус:** ⚠️ Проект законсервирован. Это черновик/эксперимент 2023 года, который не был доведён до состояния готового продукта.
 
-**Ссылка на демо:** https://leska-ver.github.io/safari-Jeka/
-**Ссылка на макет:** [Figma] - https://www.figma.com/design/Nu0MXnX2x3mEy4rBgmxf5y/Safari-webstore--%D0%96%D0%B5%D0%BA%D0%B8-?node-id=0-1&m=dev&t=QeUDYcXq7lMZG6PI-1
+- **Ссылка на демо:** https://leska-ver.github.io/safari-Jeka/
+- **Ссылка на макет:** [Figma] - https://www.figma.com/design/Nu0MXnX2x3mEy4rBgmxf5y/Safari-webstore--%D0%96%D0%B5%D0%BA%D0%B8-?node-id=0-1&m=dev&t=QeUDYcXq7lMZG6PI-1
 ---
 
 ### Коротко о проекте и причинах остановки
